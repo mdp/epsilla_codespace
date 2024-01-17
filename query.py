@@ -1,14 +1,17 @@
+from pprint import pprint
 from pyepsilla import vectordb
 
 client = vectordb.Client(host='localhost', port='8888')
 client.load_db(db_name="MyDB", db_path="/data/epsilla")
 client.use_db(db_name="MyDB")
 
-client.query(
+result = client.query(
     table_name="MyTable",
     query_text="Celestial bodies and their characteristics",
     limit=2
 )
+
+pprint(result)
 
 # Result
 # {
